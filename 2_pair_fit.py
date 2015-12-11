@@ -74,18 +74,18 @@ while (1):
     cv2.imshow("Image", imTune)
     k = cv2.waitKey(0)
     print (k)
-    if k==27: #ESC key - just exit
+    if (k==27) | (k==1048603) | (k==-1): #ESC key, or window closed - just exit
         break
     elif k==-1:
         print k
         continue
-    elif (k==65361) | (k==63234): #LEFT pressed
+    elif (k==65361) | (k==63234) | (k==1113937): #LEFT pressed
         recX = recX-1
-    elif (k==65363) | (k==63235): #RIGHT pressed
+    elif (k==65363) | (k==63235) | (k==1113939): #RIGHT pressed
         recX = recX+1
-    elif (k==65362) | (k==63232): #UP pressed
+    elif (k==65362) | (k==63232) | (k==1113938): #UP pressed
         recW = recW+1
-    elif (k==65364) | (k==63233): #DOWN pressed
+    elif (k==65364) | (k==63233) | (k==1113940): #DOWN pressed
         recW = recW-1
     elif (k==65421) | (k==13) | (k==10): #ENTER pressed - save results
         minW=min(recX, pwidth-recX-recW)
