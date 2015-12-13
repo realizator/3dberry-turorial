@@ -31,7 +31,7 @@ from stereovision.calibration import StereoCalibration
 from datetime import datetime
 
 
-# preset parameters
+# Preset parameters
 photo_width = 1280
 photo_height = 720
 params_file = './src/pf_'+str(photo_width)+'_'+str(photo_height)+'.txt'
@@ -49,7 +49,7 @@ SR = 15
 SPWS = 100
 
 
-# read parameters for image split
+# Read parameters for image split
 print('Reading split parameters...')
 f=open(params_file, 'r')
 data = json.load(f)
@@ -73,15 +73,15 @@ else:
 a = np.zeros((buf_height, buf_width, 3), dtype=np.uint8)
 
 
-# create window to be able capture key press events
+# Create window to be able capture key press events
 cv2.namedWindow("Image")
 cv2.namedWindow("Disparity")
 
-# implementing calibration data
+# Implementing calibration data
 print('Read calibration data and rectifying stereo pair...')
 calibration = StereoCalibration(input_folder='ress')
 
-# initialize the camera and start preview
+# Initialize the camera and start preview
 camera = PiCamera()
 camera.resolution=(photo_width, photo_height)
 camera.start_preview()
@@ -157,7 +157,5 @@ while (counter <100):
     t2 = datetime.now()
     print (t2-t1)
 
-
-#cv2.waitKey(0)
 camera.remove_overlay(o)
 camera.stop_preview()
