@@ -27,7 +27,7 @@ from stereovision.calibration import StereoCalibration
 imageToDisp = './scenes/photo.png'
 photo_Width = 1280
 photo_Height = 720
-params_file = './src/pf_1280_720.txt'
+params_file = './src/pf_'+str(photo_Width)+'_'+str(photo_Height)+'.txt'
 
 # Read parameters for image split
 print ('Loading split parameters...')
