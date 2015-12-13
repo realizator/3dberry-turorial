@@ -1,7 +1,7 @@
 3Dberry tutorial scripts
 ===========
 
-Set of tutorial scripts for depth map building on Raspberry Pi camera with OpenCV.
+Set of tutorial scripts for disparity map building on Raspberry Pi with 3Dberry camera add-on.
 
 Detailed information with video you can find in a set of lessons (Russian language):
 http://3dberry.org/node/6 
