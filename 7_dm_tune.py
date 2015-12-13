@@ -34,7 +34,7 @@ imageToDisp = './scenes/photo.png'
 #imageToDisp = ""
 photo_Width = 1280
 photo_Height = 720
-params_file = './src/pf_1280_720.txt'
+params_file = './src/pf_'+str(photo_Width)+'_'+str(photo_Height)+'.txt'
 
 
 if (imageToDisp == ''):
@@ -240,6 +240,3 @@ sSPWS.on_changed(update)
 
 print('Show interface to user')
 plt.show()
-
-
-
