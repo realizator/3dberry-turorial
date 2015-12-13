@@ -22,12 +22,27 @@ from picamera import PiCamera
 import time
 import cv2
 import numpy as np
+import os
 
 
 # Global variables preset
 photo_width = 1280
 photo_height = 720
-a = np.zeros((photo_height, photo_width, 3), dtype=np.uint8)
+
+
+# Overlay buffer size must be dividable by 16
+if (int(photo_height/16)*16<photo_height):
+    buf_height = (int(photo_height/16)+1)*16
+else:
+    buf_height = photo_height
+
+if (int(photo_width/16)*16<photo_width):
+    buf_width = (int(photo_width/16)+1)*16
+else:
+    buf_width = photo_width
+
+
+a = np.zeros((buf_height, buf_width, 3), dtype=np.uint8)
 a[:, 640, :] = 0xff
 filename = './scenes/photo.png'
 
@@ -66,4 +81,6 @@ cv2.waitKey(0)
 
 
 # Write image to file
+if (os.path.isdir("./scenes")==False):
+    os.makedirs("./scenes")
 cv2.imwrite(filename, image)
