@@ -16,6 +16,7 @@
 # along with 3Dberry tutorial.  
 # If not, see <http://www.gnu.org/licenses/>.
 
+import os
 import cv2
 from matplotlib import pyplot as plt
 import numpy as np
@@ -28,7 +29,7 @@ from stereovision.calibration import StereoCalibration
 total_photos = 15
 photo_Width = 1280
 photo_Height = 720
-params_file = './src/pf_1280_720.txt'
+params_file = './src/pf_'+str(photo_Width)+'_'+str(photo_Height)+'.txt'
 # Chessboard parameters
 rows = 6
 columns = 9
@@ -63,9 +64,10 @@ while photo_counter != total_photos:
   print ('Import pair No ' + str(photo_counter))
   leftName = './pairs/left_'+str(photo_counter).zfill(2)+'.png'
   rightName = './pairs/right_'+str(photo_counter).zfill(2)+'.png'
-  imgLeft = cv2.imread(leftName,1)
-  imgRight = cv2.imread(rightName,1)
-  calibrator.add_corners((imgLeft, imgRight), True)
+  if os.path.isfile(leftName) and os.path.isfile(rightName):
+      imgLeft = cv2.imread(leftName,1)
+      imgRight = cv2.imread(rightName,1)
+      calibrator.add_corners((imgLeft, imgRight), True)
 print ('End cycle')
 
 
@@ -81,5 +83,6 @@ rectified_pair = calibration.rectify((imgLeft, imgRight))
 
 cv2.imshow('Left CALIBRATED', rectified_pair[0])
 cv2.imshow('Right CALIBRATED', rectified_pair[1])
+cv2.imwrite("rectifyed_left.jpg",rectified_pair[0])
+cv2.imwrite("rectifyed_right.jpg",rectified_pair[1])
 cv2.waitKey(0)
-
