@@ -19,12 +19,13 @@
 
 import cv2
 import json
+import os
 
 # Global variables preset
 total_photos = 15
 photo_Width = 1280
 photo_Height = 720
-params_file = './src/pf_1280_720.txt'
+params_file = './src/pf_'+str(photo_width)+'_'+str(photo_height)+'.txt'
 photo_counter = 0
 
 
@@ -39,6 +40,8 @@ f.close()
 
 
 # Main pair cut cycle
+if (os.path.isdir("./pairs")==False):
+    os.makedirs("./pairs")
 while photo_counter != total_photos:
     photo_counter +=1
     filename = './src/scene_'+str(photo_Width)+'x'+str(photo_Height)+\
@@ -54,4 +57,3 @@ while photo_counter != total_photos:
     print ('Pair No '+str(photo_counter)+' saved.')
     
 print ('End cycle')
-
