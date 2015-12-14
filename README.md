@@ -21,7 +21,7 @@ split parameters for stereopair.
 <br>
 
 <b>3_chess_cycle.py</b> - takes a series of photos for stereopair calibration, shows count
-down timer. You need a printed chessboard with 9x6 parameters.<br>
+down timer. You need a printed chessboard with 9x6 parameters (file "pattern.png" included).<br>
 <br>Video: https://www.youtube.com/watch?v=3COWaa2dW8s
 <br>Lesson: http://3dberry.org/node/13<br>
 <br>
