@@ -25,7 +25,7 @@ import os
 total_photos = 15
 photo_Width = 1280
 photo_Height = 720
-params_file = './src/pf_'+str(photo_width)+'_'+str(photo_height)+'.txt'
+params_file = './src/pf_'+str(photo_Width)+'_'+str(photo_Height)+'.txt'
 photo_counter = 0
 
 

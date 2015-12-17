@@ -32,9 +32,9 @@ from datetime import datetime
 
 
 # Preset parameters
-photo_width = 1280
-photo_height = 720
-params_file = './src/pf_'+str(photo_width)+'_'+str(photo_height)+'.txt'
+photo_Width = 1280
+photo_Height = 720
+params_file = './src/pf_'+str(photo_Width)+'_'+str(photo_Height)+'.txt'
 
 
 # Depth map default preset
@@ -61,15 +61,15 @@ f.close()
 
 # Overlay preset
 # Overlay buffer size must be dividable by 16
-if (int(photo_height/16)*16<photo_height):
-    buf_height = (int(photo_height/16)+1)*16
+if (int(photo_Height/16)*16<photo_Height):
+    buf_height = (int(photo_Height/16)+1)*16
 else:
-    buf_height = photo_height
+    buf_height = photo_Height
 
-if (int(photo_width/16)*16<photo_width):
-    buf_width = (int(photo_width/16)+1)*16
+if (int(photo_Width/16)*16<photo_Width):
+    buf_width = (int(photo_Width/16)+1)*16
 else:
-    buf_width = photo_width
+    buf_width = photo_Width
 a = np.zeros((buf_height, buf_width, 3), dtype=np.uint8)
 
 
@@ -83,12 +83,12 @@ calibration = StereoCalibration(input_folder='ress')
 
 # Initialize the camera and start preview
 camera = PiCamera()
-camera.resolution=(photo_width, photo_height)
+camera.resolution=(photo_Width, photo_Height)
 camera.start_preview()
 camera.preview.alpfa = 128
 camera.hflip = True
 camera.preview.fullscreen = True
-#camera.preview.window = (0,0,photo_width/2,photo_height/2)
+#camera.preview.window = (0,0,photo_Width/2,photo_Height/2)
 rawCapture = PiRGBArray(camera)
 
 
@@ -137,7 +137,7 @@ def load_map_settings( fName ):
 load_map_settings ("3dmap_set.txt")
 
 o = camera.add_overlay(np.getbuffer(a), layer=3, alpha = 160)
-a[0:photo_height,imageWidth:photo_width,:] = 0
+a[0:photo_Height,imageWidth:photo_Width,:] = 0
 counter = 0
 while (counter <100):
     t1 = datetime.now()
@@ -147,12 +147,12 @@ while (counter <100):
     camera.capture(rawCapture, format="bgr", use_video_port=True)
     image = rawCapture.array
     pair_img = cv2.cvtColor (image, cv2.COLOR_BGR2GRAY)
-    imgLeft = pair_img [0:photo_height,leftIndent:imageWidth] #Y+H and X+W
-    imgRight = pair_img [0:photo_height,rightIndent:rightIndent+imageWidth] #Y+H and X+W
+    imgLeft = pair_img [0:photo_Height,leftIndent:imageWidth] #Y+H and X+W
+    imgRight = pair_img [0:photo_Height,rightIndent:rightIndent+imageWidth] #Y+H and X+W
     rectified_pair = calibration.rectify((imgLeft, imgRight))
     disparity = stereo_depth_map(rectified_pair)
     disparity = cv2.cvtColor (disparity, cv2.COLOR_BGR2RGB)
-    a[0:photo_height,0:imageWidth,:] = disparity
+    a[0:photo_Height,0:imageWidth,:] = disparity
     o.update(a)
     t2 = datetime.now()
     print (t2-t1)
