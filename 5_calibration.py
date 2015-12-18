@@ -18,7 +18,6 @@
 
 import os
 import cv2
-from matplotlib import pyplot as plt
 import numpy as np
 import json
 from stereovision.calibration import StereoCalibrator
@@ -45,14 +44,6 @@ leftIndent = data['leftIndent']
 rightIndent = data['rightIndent']
 f.close()
 image_size = (imageWidth,photo_Height)
-
-
-def plot(title, img, i):
-    plt.subplot(2, 2, i)
-    plt.title(title)
-    plt.imshow(img, 'gray')
-    plt.gca().get_xaxis().set_visible(False)
-    plt.gca().get_yaxis().set_visible(False)
 
 
 calibrator = StereoCalibrator(rows, columns, square_size, image_size)
