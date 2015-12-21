@@ -1,0 +1,6 @@
+{
+    "imageWidth":619,
+    "jointWidth":40,
+    "leftIndent":0,
+    "rightIndent":659
+}
