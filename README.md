@@ -1,6 +1,10 @@
 3Dberry tutorial scripts
 ===========
 
+UPD> Hello from 2019! You can find updated code for our 2-cameras Pi board [here in stereo-pi repository](https://github.com/realizator/stereopi-tutorial)
+
+UPD> And a brief tutorial of using it [here in our Medium blog](https://medium.com/stereopi/opencv-and-depth-map-on-stereopi-tutorial-62cb6792bbed)
+
 Set of tutorial scripts for disparity map building on Raspberry Pi with 3Dberry camera add-on.
 
 Detailed information with video you can find in a set of lessons (Russian language):
